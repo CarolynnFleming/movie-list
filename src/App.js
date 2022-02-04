@@ -31,8 +31,13 @@ function App() {
   }
 
   useEffect(() => {
+    const filteredMovies = movies.filter(movie =>
+       movie.title.includes(filter));
 
-  });
+    setFilteredMovies(filteredMovies);
+  }, [filter, movies]);
+
+
   return (
     <div className="App">
       <div className='current-movie-section'>
