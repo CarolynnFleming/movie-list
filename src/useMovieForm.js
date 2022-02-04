@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function useMovieForm() {
   const [titleForm, setTitleForm] = useState('');
@@ -8,6 +8,6 @@ export default function useMovieForm() {
 
 
   return {
-    titleForm, setTitleForm, directorForm, setDirectorForm, yearForm, setYearForm, colorForm, setColorForm,
+    titleForm, setTitleForm, directorForm, setDirectorForm, yearForm, setYearForm, colorForm, setColorForm
   };
 }
