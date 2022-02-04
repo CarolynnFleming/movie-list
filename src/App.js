@@ -3,6 +3,7 @@ import './App.css';
 import { useState } from 'react';
 import useMovieForm from './useMovieForm';
 import MovieForm from './MovieForm';
+import MovieItem from './MovieItem';
 
 function App() {
   const [movies, setMovies] = useState('');
@@ -29,7 +30,7 @@ function App() {
           colorForm={setColorForm}
           addMovie={addMovie}/>
           {
-            
+            titleForm && <MovieItem title={titleForm} director={directorForm} year={yearForm} color={colorForm}/>
           }
 
       </div>
