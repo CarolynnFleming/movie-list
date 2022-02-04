@@ -16,9 +16,15 @@ export default function MovieForm({ titleForm, setTitleForm, directorForm, setDi
     setColorForm('red');
   }
   return <form onSubmit={handleSubmit}>
-      <label>
-          <input required value={titleForm} onChange={e => setTitleForm(e.target.value)}/>
-      </label>
+    <label>
+        Title:
+      <input required value={titleForm} onChange={e => setTitleForm(e.target.value)}/>
+    </label>
+    Director:
+    <input required value={directorForm} onChange={e => setDirectorForm(e.target.value)}/>
+    <label>
+
+    </label>
 
   </form>;
 }
