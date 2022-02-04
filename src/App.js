@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useMovieForm from './useMovieForm';
 import MovieForm from './MovieForm';
 import MovieItem from './MovieItem';
@@ -29,6 +29,10 @@ function App() {
     setFilter('');
     setMovies([...movies]);
   }
+
+  useEffect(() => {
+
+  });
   return (
     <div className="App">
       <div className='current-movie-section'>
