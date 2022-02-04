@@ -4,6 +4,7 @@ import { useState } from 'react';
 import useMovieForm from './useMovieForm';
 import MovieForm from './MovieForm';
 import MovieItem from './MovieItem';
+import MovieList from './MovieList';
 
 function App() {
   const [movies, setMovies] = useState('');
@@ -22,6 +23,11 @@ function App() {
   }
   function deleteMovie(title) {
     const index = movies.findIndex(movie => movie.title === title);
+
+    movies.splice(index, 1);
+
+    setFilter('');
+    setMovies([...movies]);
   }
   return (
     <div className="App">
