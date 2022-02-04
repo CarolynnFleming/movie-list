@@ -17,6 +17,11 @@ function App() {
   function addMovie(newMovie) {
     const updateMovies = [...movies, newMovie];
     setMovies(updateMovies);
+
+   
+  }
+  function deleteMovie(title) {
+    const index = movies.findIndex(movie => movie.title === title);
   }
   return (
     <div className="App">
@@ -33,7 +38,7 @@ function App() {
         {
           titleForm && <MovieItem title={titleForm} director={directorForm} year={yearForm} color={colorForm}/>
         }
-
+        
       </div>
     </div>
   );
