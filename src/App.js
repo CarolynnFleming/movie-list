@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import useMovieForm from './useMovieForm';
+import MovieForm from './MovieForm';
 
 function App() {
   const [movies, setMovies] = useState('');
@@ -18,7 +19,20 @@ function App() {
   }
   return (
     <div className="App">
-     
+      <div className='current-movie-section'>
+        <MovieForm titleForm={titleForm}
+          setTitleForm={setTitleForm}
+          directorForm={directorForm}
+          setDirectorForm={setDirectorForm}
+          yearForm={yearForm}
+          setYearForm={setYearForm}
+          colorForm={setColorForm}
+          addMovie={addMovie}/>
+          {
+            
+          }
+
+      </div>
     </div>
   );
 }
