@@ -9,6 +9,11 @@ export default function MovieForm({ titleForm, setTitleForm, directorForm, setDi
       color: colorForm,
     };
     addMovie(movie);
+
+    setTitleForm('');
+    setDirectorForm('');
+    setYearForm('');
+    setColorForm('red');
   }
   return <div></div>;
 }
