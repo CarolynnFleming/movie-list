@@ -26,8 +26,16 @@ export default function MovieForm({ titleForm, setTitleForm, directorForm, setDi
     </label>
     <label>
         Year Released:
-        <input required value={yearForm} onChange={e => setYearForm(e.target.value)}/>
+      <input required value={yearForm} onChange={e => setYearForm(e.target.value)}/>
     </label>
+    Poster Color:
+    <select value={colorForm} onChange={e => setColorForm(e.target.value)}>
+      <option value='pink'>Pink</option>
+      <option value='yellow'>Yellow</option>
+      <option value='lightblue'>lightblue</option>
+      <option value='red'>Red</option>
+      <option value='oragne'>Orange</option>
+    </select>
 
   </form>;
 }
