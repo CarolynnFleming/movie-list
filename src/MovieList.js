@@ -1,10 +1,10 @@
 import React from 'react';
 import MovieItem from './MovieItem'; 
 
-export default function MovieList({ movies, deleteMovie }) {
-  return <div className='movie-list'>
+export default function MovieList(props) {
+  return (<div className='movie-list'>
     {
-      movies.map((movie, i) => <MovieItem deleteMovie={deleteMovie} key={`${movie.title}-${i}`} {...movie}/>)
+      props.movies.map((movie, i) => <MovieItem key={`${movie}-${i}`} movie={movie} handleDeleteMovie={props.handleDeleteMovie}/>)
     }
-  </div>;
+  </div>);
 }
