@@ -3,7 +3,6 @@ import './App.css';
 import { useState } from 'react';
 import useMovieForm from './useMovieForm';
 import MovieForm from './MovieForm';
-import MovieItem from './MovieItem';
 
 function App() {
   const [movies, setMovies] = useState('');
@@ -11,14 +10,13 @@ function App() {
   const [filteredMovies, setFilteredMovies] = useState([]);
 
   const {
-    titleForm, setTitleForm, directorForm, setDirectorForm, yearForm, setYearForm, colorForm, setColorForm
+    titleForm, setTitleForm, directorForm, setDirectorForm, yearForm, setYearForm, colorForm, setColorForm,
   } = useMovieForm();
 
   function addMovie(newMovie) {
     const updateMovies = [...movies, newMovie];
     setMovies(updateMovies);
   }
-
   return (
     <div className="App">
       <div className='current-movie-section'>
@@ -28,11 +26,11 @@ function App() {
           setDirectorForm={setDirectorForm}
           yearForm={yearForm}
           setYearForm={setYearForm}
-          colorForm={setColorForm}
+          colorForm={colorForm}
+          setColorForm={setColorForm}
           addMovie={addMovie}/>
-        {
-          titleForm && <MovieItem title={titleForm} director={directorForm} year={yearForm} color={colorForm}/>
-        }
+        
+
       </div>
     </div>
   );
