@@ -20,10 +20,13 @@ export default function MovieForm({ titleForm, setTitleForm, directorForm, setDi
         Title:
       <input required value={titleForm} onChange={e => setTitleForm(e.target.value)}/>
     </label>
-    Director:
-    <input required value={directorForm} onChange={e => setDirectorForm(e.target.value)}/>
     <label>
-
+    Director:
+      <input required value={directorForm} onChange={e => setDirectorForm(e.target.value)}/>
+    </label>
+    <label>
+        Year Released:
+        <input required value={yearForm} onChange={e => setYearForm(e.target.value)}/>
     </label>
 
   </form>;
