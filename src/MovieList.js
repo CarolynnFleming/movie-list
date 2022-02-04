@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieItem from './MovieItem';
+import MovieItem from './MovieItem'; 
 
 export default function MovieList({ movies, deleteMovie }) {
   return <div className='movie-list'>

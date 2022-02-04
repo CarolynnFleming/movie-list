@@ -8,7 +8,7 @@ import MovieList from './MovieList';
 
 function App() {
   const [movies, setMovies] = useState('');
-  const [filter, setFilter] = useState([]);
+  const [addfilter, setFilter] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
 
   const {
@@ -21,6 +21,13 @@ function App() {
 
    
   }
+    
+  const movie = {
+    title: titleForm,
+    director: directorForm,
+    year: yearForm,
+    color: colorForm,
+  };
   function deleteMovie(title) {
     const index = movies.findIndex(movie => movie.title === title);
 
@@ -32,10 +39,10 @@ function App() {
 
   useEffect(() => {
     const filteredMovies = movies.filter(movie =>
-       movie.title.includes(filter));
+      movie.title.includes(addfilter));
 
     setFilteredMovies(filteredMovies);
-  }, [filter, movies]);
+  }, [addfilter, movies]);
 
 
   return (
@@ -55,6 +62,14 @@ function App() {
         }
         
       </div>
+      <p>Filter Mpvoies</p>
+      <input value={addfilter} onChange={(e) => setFilter(e.target.value)}/>
+      <MovieList movies={
+        filteredMovies.length
+          ? filteredMovies
+          : movies
+      }
+      deleteMovie={deleteMovie}/>
     </div>
   );
 }
