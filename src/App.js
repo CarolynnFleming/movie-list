@@ -12,6 +12,10 @@ function App() {
     titleForm, setTitleForm, directorForm, setDirectorForm, yearForm, setYearForm, colorForm, setColorForm,
   } = useMovieForm();
 
+  function addMovie(newMovie) {
+    const updateMovies = [...movies, newMovie];
+    setMovies(updateMovies);
+  }
   return (
     <div className="App">
      
