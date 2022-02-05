@@ -1,75 +1,80 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import useMovieForm from './useMovieForm';
 import MovieForm from './MovieForm';
 import MovieItem from './MovieItem';
 import MovieList from './MovieList';
 
 function App() {
-  const [movies, setMovies] = useState('');
-  const [addfilter, setFilter] = useState([]);
+  const [allMovies, setAllMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
 
   const {
     titleForm, setTitleForm, directorForm, setDirectorForm, yearForm, setYearForm, colorForm, setColorForm,
   } = useMovieForm();
 
-  function addMovie(newMovie) {
-    const updateMovies = [...movies, newMovie];
-    setMovies(updateMovies);
+  function submitMovie(e) {
+    e.preventDefault();
+  
+    const newMovie = {
+      title: titleForm,
+      director: directorForm,
+      year: yearForm,
+      color: colorForm,
+    };
+    setAllMovies([...allMovies, newMovie]);
 
-   
+    setTitleForm('');
+    setDirectorForm('');
+    setYearForm('');
+    setColorForm('red');
   }
-    
-  const movie = {
-    title: titleForm,
-    director: directorForm,
-    year: yearForm,
-    color: colorForm,
-  };
-  function deleteMovie(title) {
-    const index = movies.findIndex(movie => movie.title === title);
+  function handleDeleteMovie(id) {
+    const movieIndex = allMovies.findIndex(movie => movie.id === id);
 
-    movies.splice(index, 1);
-
-    setFilter('');
-    setMovies([...movies]);
+    allMovies.splice(movieIndex, 1);
+    setAllMovies([...allMovies]);
   }
 
-  useEffect(() => {
-    const filteredMovies = movies.filter(movie =>
-      movie.title.includes(addfilter));
-
-    setFilteredMovies(filteredMovies);
-  }, [addfilter, movies]);
+  function handleFilterMovies(search) {
+    const lessMovies = allMovies.filter(movie => movie.title.includes(search));
+    search ? setFilteredMovies(lessMovies) : setFilteredMovies(allMovies);
+  }
 
 
   return (
     <div className="App">
       <div className='current-movie-section'>
-        <MovieForm titleForm={titleForm}
-          setTitleForm={setTitleForm}
-          directorForm={directorForm}
-          setDirectorForm={setDirectorForm}
-          yearForm={yearForm}
-          setYearForm={setYearForm}
-          colorForm={colorForm}
-          setColorForm={setColorForm}
-          addMovie={addMovie}/>
-        {
-          titleForm && <MovieItem title={titleForm} director={directorForm} year={yearForm} color={colorForm}/>
-        }
-        
+
+        <MovieItem movie={{
+          title: titleForm,
+          director: directorForm,
+          year: yearForm,
+          color: colorForm
+        }}/>
       </div>
-      <p>Filter Mpvoies</p>
-      <input value={addfilter} onChange={(e) => setFilter(e.target.value)}/>
-      <MovieList movies={
-        filteredMovies.length
-          ? filteredMovies
-          : movies
-      }
-      deleteMovie={deleteMovie}/>
+      <div className='movie-filter'>
+        FilterMovies:
+        <input onChange={(e) => handleFilterMovies(e.target.value)}/>
+      </div>
+
+      <MovieForm 
+        submitMovie={submitMovie}
+        titleForm={titleForm}
+        setTitleForm={setTitleForm}
+        directorForm={directorForm}
+        setDirectorForm={setDirectorForm}
+        yearForm={yearForm}
+        setYearForm={setYearForm}
+        colorForm={colorForm}
+        setColorForm={setColorForm}/>
+        
+      <MovieList 
+        movies={filteredMovies.length ? filteredMovies : allMovies}
+        handleDeleteMovie={handleDeleteMovie}/>
+      
+      
     </div>
   );
 }

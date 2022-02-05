@@ -1,10 +1,12 @@
 import React from 'react';
 
-export default function MovieItem({ color,
-  title, director, year, deleteMovie }) {
-  return <div onClick={deleteMovie ? deleteMovie(title) : null} className='movie-item' style={{ background: color }}>
-    <h1>{title}</h1>
-    <p>{year}</p>
-    <p>by {director}</p>
+export default function MovieItem(props) {
+  return <div style={{ backgroundColor: props.movie.color }}
+    className='movie'
+    onClick={() => props.handleDeleteMovie && props.handleDeleteMovie(props.movie.id)}>
+    <h1>{props.movie.title}</h1>
+    <p>{props.movie.year}</p>
+    <img src="movie.png"/>
+    <p>by {props.movie.director}</p>
   </div>;
 }
