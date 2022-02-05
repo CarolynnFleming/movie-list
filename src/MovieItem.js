@@ -6,7 +6,7 @@ export default function MovieItem(props) {
     onClick={() => props.handleDeleteMovie && props.handleDeleteMovie(props.movie.id)}>
     <h1>{props.movie.title}</h1>
     <p>{props.movie.year}</p>
-    <img src="movie.png"/>
+    <img className='movie-image' src="movie.png"/>
     <p>by {props.movie.director}</p>
   </div>;
 }

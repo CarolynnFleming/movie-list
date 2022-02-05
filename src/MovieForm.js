@@ -24,7 +24,7 @@ export default function MovieForm(props) {
           <option value='yellow'>Yellow</option>
           <option value='lightblue'>lightblue</option>
           <option value='red'>Red</option>
-          <option value='oragne'>Orange</option>
+          <option value='orange'>Orange</option>
         </select>
       </label>
       <button>
